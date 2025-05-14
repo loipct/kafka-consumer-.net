@@ -6,12 +6,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copy and restore dependencies
-COPY src/*.csproj ./
-RUN dotnet restore
+COPY src/consumer-kafka/consumer-kafka.csproj ./consumer-kafka/
+RUN dotnet restore consumer-kafka/consumer-kafka.csproj
 
 # Copy all source and publish
-COPY src/ ./
-RUN dotnet publish -c Release -o /app/out
+COPY src/consumer-kafka/ ./consumer-kafka/
+RUN dotnet publish consumer-kafka/consumer-kafka.csproj -c Release -o /app/out
 
 # -------------------------------
 # Runtime stage
@@ -37,4 +37,4 @@ RUN useradd -m appuser
 USER appuser
 
 # Define entry point
-ENTRYPOINT ["dotnet", "kafka-consumer.dll"]
+ENTRYPOINT ["dotnet", "consumer-kafka.dll"]

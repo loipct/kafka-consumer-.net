@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = '312001loi/kafka-consumer-app'
         DOCKER_TAG = 'latest'
-        DOCKER_CREDENTIALS_ID = 'docker-hub-credentials' // Đặt trong Jenkins -> Credentials
+        DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
     }
 
     stages {
@@ -18,9 +18,9 @@ pipeline {
         stage('Restore and Build .NET App') {
             steps {
                 echo '⚙️ Building .NET app...'
-                dir('src') {
-                    sh 'dotnet restore'
-                    sh 'dotnet publish -c Release -o ../publish'
+                dir('src/consumer-kafka') {
+                    sh 'dotnet restore consumer-kafka.csproj'
+                    sh 'dotnet publish consumer-kafka.csproj -c Release -o ../../out'  // Lưu vào thư mục out để khớp với Dockerfile
                 }
             }
         }
