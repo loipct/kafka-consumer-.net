@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Xc5TaRzrOeTmPNL5IpC43fv7BdxeAcczQD/ODpQSzcA=",
+  "Source": "consumer-kafka",
+  "BasePath": "_content/consumer-kafka",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
