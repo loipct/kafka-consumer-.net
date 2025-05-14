@@ -36,7 +36,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                echo '🚀 Pushing Docker image to Docker Hub...'
+                echo '🚀 Pushing Docker image to Docker Hub v2...'
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_CREDENTIALS_ID}") {
                         dockerImage.push()
